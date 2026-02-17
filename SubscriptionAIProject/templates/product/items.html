@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}OPENOLD{% endblock %}
+
+{% block meta %}
+
+<meta name="description" content="Активация / Продление или покупка готового аккаунта с подпиской">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://openold.ai">
+<link rel="alternate" hreflang="ru" href="https://openold.ai">
+<link rel="alternate" hreflang="en" href="https://openold.ai/en">
+<meta property="og:title" content="OPENOLD">
+<meta property="og:description" content="Активация / Продление или покупка готового аккаунта с подпиской">
+<meta property="og:url" content="https://openold.ai">
+<meta property="og:site_name" content="OPENOLD">
+<meta property="og:locale" content="ru_RU">
+{#<meta property="og:image" content="{% static 'assets/images/QJlSH0F3J2PN.png' %}">#}
+<meta property="og:image" content="{% static 'assets/images/buysubscription.jpg' %}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OPENOLD">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OPENOLD">
+<meta name="twitter:description" content="Активация / Продление или покупка готового аккаунта с подпиской">
+<meta name="twitter:image" content="https://openold.ai/og.png">
+<link rel="apple-touch-icon" href="{% static 'assets/images/Gi5DW7xkQp4Y.png' %}" sizes="180x180" type="image/png">
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="landing-module__79oWsG__hero">
+   <h1 class="landing-module__79oWsG__heroTitle">ChatGPT Plus за минуту</h1>
+   <p class="landing-module__79oWsG__heroSubtitle">Активация / Продление или покупка готового аккаунта с подпиской</p>
+   <div class="landing-module__79oWsG__heroActions">
+      <a class="landing-module__79oWsG__cta landing-module__79oWsG__heroPrimaryCta" href="#pricing">Выбрать тариф</a>
+   </div>
+   <p class="landing-module__79oWsG__heroNote">Мгновенная выдача · Без входа в аккаунт · Автоматически · Безопасно · Гарантия на весь срок подписки</p>
+</section>
+
+{% include 'steps.html' %}
+
+<section class="landing-module__79oWsG__sectionCard landing-module__79oWsG__products" aria-labelledby="products-title" id="pricing">
+   <div class="landing-module__79oWsG__productsHeader">
+      <div class="landing-module__79oWsG__productsHeading">
+         <h2 id="products-title" class="landing-module__79oWsG__productsTitle">Выберите тариф</h2>
+         <p class="landing-module__79oWsG__productsSubtitle">Активация / Продление или покупка готового аккаунта с подпиской</p>
+      </div>
+   </div>
+   <div class="landing-module__79oWsG__cards">
+
+   {% for product in products %}
+      <article class="landing-module__79oWsG__card
+         {% if product.card_featured %} landing-module__79oWsG__cardFeatured {% endif %}
+      ">
+         {% if product.badge != 1%}
+            <span class="landing-module__79oWsG__cardBadge">{{ product.get_badge_display }}</span>
+         {% endif %}
+
+         <div class="landing-module__79oWsG__cardHeader">
+            <h3 class="landing-module__79oWsG__cardTitle">
+               <span class="landing-module__79oWsG__cardTitleName">{{ product.title|safe }}</span>
+               <span class="landing-module__79oWsG__cardTitleTerm">{{ product.get_term_display }}</span>
+            </h3>
+            <p class="landing-module__79oWsG__cardSubtitle">{{ product.subtitle }}</p>
+            <div class="landing-module__79oWsG__cardPrice">{{ product.price|floatformat }} ₽</div>
+         </div>
+         <ul class="landing-module__79oWsG__cardList">
+            {{ product.features_html|safe }}
+         </ul>
+         <div class="landing-module__79oWsG__cardFooter">
+            <a class="landing-module__79oWsG__cta" data-ym-goal="bezlimit" href="{% url 'product' product_id=product.id %}">Купить</a>
+            <ul class="landing-module__79oWsG__cardMeta">
+               <li data-kind="positive">Автоматически</li>
+               <li data-kind="positive">Безопасно</li>
+               <li data-kind="positive">Гарантия и поддержка 24/7</li>
+            </ul>
+         </div>
+      </article>
+   {% endfor %}
+</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+User-Agent: Amazonbot
+Disallow: /
+
+User-Agent: Applebot-Extended
+Disallow: /
+
+User-Agent: Bytespider
+Disallow: /
+
+User-Agent: CCBot
+Disallow: /
+
+User-Agent: ClaudeBot
+Disallow: /
+
+User-Agent: Google-Extended
+Disallow: /
+
+User-Agent: GPTBot
+Disallow: /
+
+User-Agent: meta-externalagent
+Disallow: /
+
+User-Agent: anthropic-ai
+Disallow: /
+
+User-Agent: cohere-ai
+Disallow: /
+
+User-Agent: *
+Allow: /
+
+Sitemap: https://{{ DOMAIN_SITE }}/sitemap.xml
