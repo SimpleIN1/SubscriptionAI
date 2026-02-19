@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,14 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--_*&y@49zj+5@lex)!au112tjw@+6dwncjwe8q9!d5guepi_lf'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sturdily-fortuitous-jackdaw.cloudpub.ru', '127.0.0.1']
-
-CSRF_TRUSTED_ORIGINS = ['https://sturdily-fortuitous-jackdaw.cloudpub.ru', 'http://127.0.0.1']
+ALLOWED_HOSTS = str(os.getenv("ALLOWED_HOSTS")).split(',')
+INTERNAL_IPS = str(os.getenv("INTERNAL_IPS")).split(',')
+CSRF_TRUSTED_ORIGINS = str(os.getenv("CSRF_TRUSTED_ORIGINS")).split(',')
 
 # Application definition
 
@@ -40,8 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'MainApp',
-    'ProductApp'
+    'ProductApp',
+    'PaymentApp',
 ]
+
+if DEBUG:
+    INSTALLED_APPS.append("debug_toolbar")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +61,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
 
 ROOT_URLCONF = 'SubscriptionAIProject.urls'
 
@@ -75,6 +87,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SubscriptionAIProject.wsgi.application'
 
+# Caches
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": os.getenv('CACHE_REDIS', "redis://localhost:6379/0"),
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
