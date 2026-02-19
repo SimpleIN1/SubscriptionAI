@@ -6,16 +6,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="next-size-adjust" content="">
+      <link rel="manifest" href="{% url 'web-manifest' %}">
+      <meta name="robots" content="index, follow">
 
-      <link rel="icon" href="{% static 'assets/images/XvVlkHmduzU4.ico' %}" sizes="48x48" type="image/x-icon">
-      <link rel="icon" href="{% static 'assets/images/i7toH6iIwLXW.png' %}" sizes="256x256" type="image/png">
+      <link rel="icon" href="{% static 'assets/images/buysubscription-logo-7.png' %}" sizes="48x48" type="image/x-icon">
+      <link rel="icon" href="{% static 'assets/images/buysubscription-logo-256.png' %}" sizes="256x256" type="image/png">
 
       <link rel="stylesheet" href="{% static 'assets/css/base-zoRwQ29nH4yX.css' %}" nonce="W7NUJP7gUFpWw1tLxXVeug==" data-precedence="next">
       <link rel="stylesheet" href="{% static 'assets/css/base-sqgELvyrP27f.css' %}" nonce="W7NUJP7gUFpWw1tLxXVeug==" data-precedence="next">
 
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-      <title>{% block title %}{% endblock %}</title>
+      <title>{% block title %}{{ SITE_NAME }}{% endblock %}</title>
 
       {% block meta %}{% endblock %}
 
@@ -48,7 +50,11 @@
          <div class="landing-module__79oWsG__container">
             <header class="landing-module__79oWsG__nav">
                <div class="landing-module__79oWsG__logo">
-                  <a href="/"><img alt="OpenOld.AI" width="159" height="60" decoding="async" data-nimg="1" class="landing-module__79oWsG__logoMark" style="color:transparent;object-fit:contain" src="{% static 'assets/images/YZJG39rvQy1M.webp' %}"></a>
+                  <a href="/">
+                     {#<img alt="OpenOld.AI" width="159" height="60" decoding="async" data-nimg="1" class="landing-module__79oWsG__logoMark" style="color:transparent;object-fit:contain" src="{% static 'assets/images/YZJG39rvQy1M.webp' %}">#}
+                     <img alt="OpenOld.AI" width="159" height="60" decoding="async" data-nimg="1" class="landing-module__79oWsG__logoMark" style="color:transparent;object-fit:contain" src="{% static 'assets/images/buysubscription-logo-name.png' %}">
+                  </a>
+
                </div>
                <nav class="landing-module__79oWsG__navCenter" aria-label="Навигация по странице">
                   <ul class="landing-module__79oWsG__navLinks">

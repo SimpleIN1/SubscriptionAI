@@ -5,17 +5,15 @@
 
 {% block meta %}
    <meta name="description" content="{{ product.subtitle }}">
-   <link rel="manifest" href="/manifest.webmanifest">
-   <meta name="robots" content="index, follow">
    <link rel="canonical" href="{% url 'product' product_id=product.id %}">
    <link rel="alternate" hreflang="ru" href="{% url 'product' product_id=product.id %}">
    <link rel="alternate" hreflang="en" href="https://openold.ai/en/product/chatgpt-plus-1m-activation">
    <meta property="og:title" content="{{product.title_replace_br}} - {{ product.get_term_display }}">
    <meta property="og:description" content="{{ product.subtitle }}">
-   <meta property="og:url" content="https://openold.ai/product/chatgpt-plus-1m-activation">
-   <meta property="og:site_name" content="OPENOLD">
+   <meta property="og:url" content="{% url 'product' product_id=product.id %}">
+   <meta property="og:site_name" content="{{ SITE_NAME }}">
    <meta property="og:locale" content="ru_RU">
-   <meta property="og:image" content="{% static 'assets/images/QJlSH0F3J2PN.png' %}">
+   <meta property="og:image" content="{% static 'assets/images/buysubscription.jpg' %}">
    <meta property="og:image:width" content="1200">
    <meta property="og:image:height" content="630">
    <meta property="og:image:alt" content="{{product.title_replace_br}} - {{ product.get_term_display }}">
@@ -25,7 +23,7 @@
    <meta name="twitter:description" content="{{ product.subtitle }}">
    <meta name="twitter:image" content="https://openold.ai/og.png">
 
-   <link rel="apple-touch-icon" href="{% static 'assets/images/Gi5DW7xkQp4Y.png' %}" sizes="180x180" type="image/png">
+   <link rel="apple-touch-icon" href="{% static 'assets/images/buysubscription-logo-256.png' %}" sizes="180x180" type="image/png">
 
    <link rel="preload" href="/uploads/{{ product.image }}" as="image">
 {% endblock %}

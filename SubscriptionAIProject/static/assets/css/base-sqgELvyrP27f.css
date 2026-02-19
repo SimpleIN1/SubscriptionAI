@@ -772,7 +772,7 @@ html[data-scrolling=true] .landing-module__79oWsG__reviewCardSkeleton:after {
 .landing-module__79oWsG__logoMark {
 	flex-shrink: 0;
 	width: auto;
-	height: 60px;
+	height: 40px;
 	transition: transform .22s
 }
 
@@ -3179,6 +3179,11 @@ html[data-scroll=scrolled] .landing-module__79oWsG__logoMark {
 	}
 }
 
+@media (max-width:1080px) {
+    .landing-module__79oWsG__logoMark {
+        height: 35px;
+    }
+}
 
 
 

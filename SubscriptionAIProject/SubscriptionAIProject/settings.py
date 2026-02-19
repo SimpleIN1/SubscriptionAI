@@ -138,4 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Site settings
 
-DOMAIN_SITE = "openold.ai"
+SITE_DOMAIN = "openold.ai"
+SITE_NAME = "Buy Subscription AI"

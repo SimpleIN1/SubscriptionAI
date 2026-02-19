@@ -3,5 +3,6 @@ from django.conf import settings
 
 def website_data(request):
     return {
-        "DOMAIN_SITE": settings.DOMAIN_SITE
+        "SITE_DOMAIN": settings.SITE_DOMAIN,
+        "SITE_NAME": settings.SITE_NAME,
     }

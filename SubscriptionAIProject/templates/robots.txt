@@ -31,4 +31,4 @@ Disallow: /
 User-Agent: *
 Allow: /
 
-Sitemap: https://{{ DOMAIN_SITE }}/sitemap.xml
+Sitemap: https://{{ SITE_DOMAIN }}/sitemap.xml

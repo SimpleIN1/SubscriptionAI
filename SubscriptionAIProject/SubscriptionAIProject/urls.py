@@ -17,7 +17,7 @@ from django.urls import path
 from django.urls import include
 from django.contrib import admin
 from django.conf.urls.static import static
-from django.views.generic.base import  TemplateView
+from django.views.generic.base import TemplateView
 
 from django.conf import settings
 
