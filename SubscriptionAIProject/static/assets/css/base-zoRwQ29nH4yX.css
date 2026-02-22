@@ -51,7 +51,7 @@
 .digiseller-chat-module__e3MhwG__launcherTooltip {
 	background: linear-gradient(145deg, var(--surface-strong), var(--surface));
 	border: 1px solid var(--border);
-	color: var(--ink);
+	color: #000;
 	white-space: nowrap;
 	opacity: 0;
 	pointer-events: none;

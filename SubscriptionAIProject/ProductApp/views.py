@@ -1,4 +1,6 @@
 from django.views import View
+from django.conf import settings
+from django.core.cache import cache
 from django.shortcuts import render, get_object_or_404
 
 from ProductApp.models import ProductModel
@@ -19,6 +21,12 @@ class ProductsView(View):
 
     def get(self, request, *args, **kwargs):
         context = {}
-        products = ProductModel.objects.all()
+
+        # caching
+        products = cache.get(settings.CACHE_PRODUCTS_KEY)
+        if not products:
+            products = ProductModel.items()
+            cache.set(settings.CACHE_PRODUCTS_KEY, products, 60*60*12)
+
         context["products"] = products
         return render(request, self.template_name, context=context)

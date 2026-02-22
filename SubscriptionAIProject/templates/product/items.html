@@ -7,10 +7,10 @@
    <meta name="description" content="Активация / Продление или покупка готового аккаунта с подпиской">
    <link rel="canonical" href="https://{{ SITE_DOMAIN }}">
    <link rel="alternate" hreflang="ru" href="https://{{ SITE_DOMAIN }}">
-   <link rel="alternate" hreflang="en" href="https://{{ SITE_DOMAIN }}/en">
+   {#<link rel="alternate" hreflang="en" href="https://{{ SITE_DOMAIN }}/en">#}
    <meta property="og:title" content="{{ SITE_NAME }}">
    <meta property="og:description" content="Активация / Продление или покупка готового аккаунта с подпиской">
-   <meta property="og:url" content="https://openold.ai">
+   <meta property="og:url" content="https://{{ SITE_DOMAIN }}">
    <meta property="og:site_name" content="{{ SITE_NAME }}">
    <meta property="og:locale" content="ru_RU">
    <meta property="og:image" content="{% static 'assets/images/buysubscription.jpg' %}">
@@ -21,7 +21,7 @@
    <meta name="twitter:card" content="summary_large_image">
    <meta name="twitter:title" content="{{ SITE_NAME }}">
    <meta name="twitter:description" content="Активация / Продление или покупка готового аккаунта с подпиской">
-   <meta name="twitter:image" content="https://openold.ai/og.png">
+   <meta name="twitter:image" content="{% static 'assets/images/buysubscription.jpg' %}">
    <link rel="apple-touch-icon" href="{% static 'assets/images/buysubscription-logo-256.png' %}" sizes="180x180" type="image/png">
 
 {% endblock %}

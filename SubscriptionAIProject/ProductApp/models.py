@@ -1,7 +1,9 @@
 import os
-
 import uuid
+
 from django.db import models
+from django.conf import settings
+from django.core.cache import cache
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import MinValueValidator
 
@@ -51,11 +53,17 @@ class ProductModel(models.Model):
     description_html = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to=upload_to)
 
+    @staticmethod
+    def items():
+        return ProductModel.objects.all().only(
+            "title", "badge", "card_featured", "subtitle", "term", "price", "features_html"
+        )
+
     def title_replace_br(self):
         return self.title.replace('<br/>', ' ')
 
     def __str__(self):
-        return self.title
+        return self.title_replace_br()
 
     class Meta:
         verbose_name = _("Product")

@@ -7,7 +7,6 @@
    <meta name="description" content="{{ product.subtitle }}">
    <link rel="canonical" href="{% url 'product' product_id=product.id %}">
    <link rel="alternate" hreflang="ru" href="{% url 'product' product_id=product.id %}">
-   <link rel="alternate" hreflang="en" href="https://openold.ai/en/product/chatgpt-plus-1m-activation">
    <meta property="og:title" content="{{product.title_replace_br}} - {{ product.get_term_display }}">
    <meta property="og:description" content="{{ product.subtitle }}">
    <meta property="og:url" content="{% url 'product' product_id=product.id %}">
@@ -21,7 +20,7 @@
    <meta name="twitter:card" content="summary_large_image">
    <meta name="twitter:title" content="{{product.title_replace_br}} - {{ product.get_term_display }}">
    <meta name="twitter:description" content="{{ product.subtitle }}">
-   <meta name="twitter:image" content="https://openold.ai/og.png">
+   <meta name="twitter:image" content="{% static 'assets/images/buysubscription.jpg' %}">
 
    <link rel="apple-touch-icon" href="{% static 'assets/images/buysubscription-logo-256.png' %}" sizes="180x180" type="image/png">
 
@@ -60,7 +59,7 @@
             {{ product.features_html|safe }}
          </ul>
          <div class="landing-module__79oWsG__cardFooter">
-            <a class="landing-module__79oWsG__cta product-module__NxU_wa__buyPrimary" href="https://www.digiseller.market/asp2/pay_wm.asp?id_d=5648773&lang=ru" data-ym-goal="activategpt" target="_blank" rel="noopener noreferrer">Купить</a>
+            <a class="landing-module__79oWsG__cta product-module__NxU_wa__buyPrimary" href="{% url 'payment-redirect' product_id=product.id %}" data-ym-goal="activategpt" target="_blank" rel="noopener noreferrer">Купить</a>
             <ul class="landing-module__79oWsG__cardMeta">
                <li data-kind="positive">Автоматически</li>
                <li data-kind="positive">Безопасно</li>
@@ -82,7 +81,7 @@
 <div class="product-module__NxU_wa__buyBar" aria-hidden="true">
    <div class="product-module__NxU_wa__buyBarInner">
       <div class="product-module__NxU_wa__buyBarPrice">{{ product.price|floatformat }} ₽</div>
-      <a class="landing-module__79oWsG__cta product-module__NxU_wa__buyBarCta" href="https://www.digiseller.market/asp2/pay_wm.asp?id_d=5648773&lang=ru" data-ym-goal="activategpt" target="_blank" rel="noopener noreferrer">Купить</a>
+      <a class="landing-module__79oWsG__cta product-module__NxU_wa__buyBarCta" href="{% url 'payment-redirect' product_id=product.id %}" data-ym-goal="activategpt" target="_blank" rel="noopener noreferrer">Купить</a>
    </div>
 </div>
 

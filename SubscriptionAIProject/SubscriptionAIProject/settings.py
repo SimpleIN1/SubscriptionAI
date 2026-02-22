@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -34,6 +35,24 @@ ALLOWED_HOSTS = str(os.getenv("ALLOWED_HOSTS")).split(',')
 INTERNAL_IPS = str(os.getenv("INTERNAL_IPS")).split(',')
 CSRF_TRUSTED_ORIGINS = str(os.getenv("CSRF_TRUSTED_ORIGINS")).split(',')
 
+# CORS
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+CORS_ALLOW_METHODS = ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT']
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = os.getenv("CORS_ORIGIN_WHITELIST").split(',')
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,7 +63,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'MainApp',
     'ProductApp',
     'PaymentApp',
 ]
@@ -79,6 +97,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'context_processors.context_processors.website_data',
+                'context_processors.context_processors.metrics',
             ],
         },
     },
@@ -95,7 +114,13 @@ CACHES = {
     }
 }
 
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+# Caches keys
+CACHE_PRODUCTS_KEY = "products_key"
+
+
+# Session settings
+if not "test" in sys.argv:
+    SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -159,5 +184,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Site settings
 
-SITE_DOMAIN = "openold.ai"
+SITE_DOMAIN = "buysubcription-ai.ru"
 SITE_NAME = "Buy Subscription AI"
+
+
+# Metrics
+METRIC_URL = os.getenv("METRIC_URL")
+METRIC_SITE_ID = os.getenv("METRIC_SITE_ID")
+
+
+# Freekassa settings
+FREEKASSA_SECRET_WORD_1 = os.getenv("FREEKASSA_SECRET_WORD_1")
+FREEKASSA_SECRET_WORD_2 = os.getenv("FREEKASSA_SECRET_WORD_2")
+FREEKASSA_SHOP_ID = os.getenv("FREEKASSA_SHOP_ID")

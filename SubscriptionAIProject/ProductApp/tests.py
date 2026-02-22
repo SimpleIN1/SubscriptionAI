@@ -44,3 +44,12 @@ class ProductViewTests(TestCase):
         self.assertTemplateUsed(response, 'not-found.html')
 
 
+class ProductModelTests(TestCase):
+    def test_title_replace_br(self):
+        product = ProductModel.objects.create(
+            title="Title<br/>Product",
+            subtitle="SubTitle Product",
+            price=123.33
+        )
+        replaced_title = product.title_replace_br()
+        self.assertEqual(replaced_title, "Title Product")
