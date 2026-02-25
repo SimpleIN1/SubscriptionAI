@@ -52,6 +52,8 @@ class ProductModel(models.Model):
     features_html = models.TextField(null=True, blank=True)
     description_html = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to=upload_to)
+    url = models.URLField(default='')
+    active = models.BooleanField(default=True)
 
     @staticmethod
     def items():

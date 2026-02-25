@@ -59,7 +59,7 @@
             {{ product.features_html|safe }}
          </ul>
          <div class="landing-module__79oWsG__cardFooter">
-            <a class="landing-module__79oWsG__cta product-module__NxU_wa__buyPrimary" href="{% url 'payment-redirect' product_id=product.id %}" data-ym-goal="activategpt" target="_blank" rel="noopener noreferrer">Купить</a>
+            <a class="landing-module__79oWsG__cta product-module__NxU_wa__buyPrimary" href="{{ product.url }}" data-ym-goal="activategpt" target="_blank" rel="noopener noreferrer">Купить</a>
             <ul class="landing-module__79oWsG__cardMeta">
                <li data-kind="positive">Автоматически</li>
                <li data-kind="positive">Безопасно</li>
@@ -81,7 +81,7 @@
 <div class="product-module__NxU_wa__buyBar" aria-hidden="true">
    <div class="product-module__NxU_wa__buyBarInner">
       <div class="product-module__NxU_wa__buyBarPrice">{{ product.price|floatformat }} ₽</div>
-      <a class="landing-module__79oWsG__cta product-module__NxU_wa__buyBarCta" href="{% url 'payment-redirect' product_id=product.id %}" data-ym-goal="activategpt" target="_blank" rel="noopener noreferrer">Купить</a>
+      <a class="landing-module__79oWsG__cta product-module__NxU_wa__buyBarCta" href="{{ product.url }}" data-ym-goal="activategpt" target="_blank" rel="noopener noreferrer">Купить</a>
    </div>
 </div>
 

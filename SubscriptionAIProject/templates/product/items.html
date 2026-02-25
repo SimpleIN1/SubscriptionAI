@@ -50,33 +50,35 @@
    <div class="landing-module__79oWsG__cards">
 
    {% for product in products %}
-      <article class="landing-module__79oWsG__card
-         {% if product.card_featured %} landing-module__79oWsG__cardFeatured {% endif %}
-      ">
-         {% if product.badge != 1%}
-            <span class="landing-module__79oWsG__cardBadge">{{ product.get_badge_display }}</span>
-         {% endif %}
+      {% if product.active %}
+         <article class="landing-module__79oWsG__card
+            {% if product.card_featured %} landing-module__79oWsG__cardFeatured {% endif %}
+         ">
+            {% if product.badge != 1%}
+               <span class="landing-module__79oWsG__cardBadge">{{ product.get_badge_display }}</span>
+            {% endif %}
 
-         <div class="landing-module__79oWsG__cardHeader">
-            <h3 class="landing-module__79oWsG__cardTitle">
-               <span class="landing-module__79oWsG__cardTitleName">{{ product.title|safe }}</span>
-               <span class="landing-module__79oWsG__cardTitleTerm">{{ product.get_term_display }}</span>
-            </h3>
-            <p class="landing-module__79oWsG__cardSubtitle">{{ product.subtitle }}</p>
-            <div class="landing-module__79oWsG__cardPrice">{{ product.price|floatformat }} ₽</div>
-         </div>
-         <ul class="landing-module__79oWsG__cardList">
-            {{ product.features_html|safe }}
-         </ul>
-         <div class="landing-module__79oWsG__cardFooter">
-            <a class="landing-module__79oWsG__cta" data-ym-goal="bezlimit" href="{% url 'product' product_id=product.id %}">Купить</a>
-            <ul class="landing-module__79oWsG__cardMeta">
-               <li data-kind="positive">Автоматически</li>
-               <li data-kind="positive">Безопасно</li>
-               <li data-kind="positive">Гарантия и поддержка 24/7</li>
+            <div class="landing-module__79oWsG__cardHeader">
+               <h3 class="landing-module__79oWsG__cardTitle">
+                  <span class="landing-module__79oWsG__cardTitleName">{{ product.title|safe }}</span>
+                  <span class="landing-module__79oWsG__cardTitleTerm">{{ product.get_term_display }}</span>
+               </h3>
+               <p class="landing-module__79oWsG__cardSubtitle">{{ product.subtitle }}</p>
+               <div class="landing-module__79oWsG__cardPrice">{{ product.price|floatformat }} ₽</div>
+            </div>
+            <ul class="landing-module__79oWsG__cardList">
+               {{ product.features_html|safe }}
             </ul>
-         </div>
-      </article>
+            <div class="landing-module__79oWsG__cardFooter">
+               <a class="landing-module__79oWsG__cta" data-ym-goal="bezlimit" href="{% url 'product' product_id=product.id %}">Купить</a>
+               <ul class="landing-module__79oWsG__cardMeta">
+                  <li data-kind="positive">Автоматически</li>
+                  <li data-kind="positive">Безопасно</li>
+                  <li data-kind="positive">Гарантия и поддержка 24/7</li>
+               </ul>
+            </div>
+         </article>
+      {% endif %}
    {% endfor %}
    </div>
 </section>
