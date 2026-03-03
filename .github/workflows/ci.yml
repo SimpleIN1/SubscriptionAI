@@ -6,7 +6,7 @@ on:
 
 jobs:
   hello-world:
-    runs-on: ubuntu-test1
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
