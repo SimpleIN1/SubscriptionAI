@@ -3,25 +3,27 @@ from __future__ import annotations
 import hashlib
 
 
-class FreeKassaSign:
-    def __init__(self, secret_word: str, shop_id: int):
-        self._secret_word = secret_word
-        self._shop_id = shop_id
+class FreeKassaSignature:
 
-    def _get_signature(self, msg: str):
+    def _get_signature(self, msg: str) -> str:
         """
-
+        Создание сигнатуры по шаблону 'attr:attr:attr:attr'
         :param msg:
-        :return:
+        :return: signature
         """
+
         return hashlib.md5(msg.encode()).hexdigest()
 
-    def get_signature(self, msg: str):
+    def get_signature(self, msg: str) -> str:
         return self._get_signature(msg)
 
 
-class FreeKassa(FreeKassaSign):
+class FreeKassa:
     API_URL = 'https://pay.freekassa.net/'
+
+    def __init__(self, secret_word: str, shop_id: int):
+        self._secret_word = secret_word
+        self._shop_id = shop_id
 
     def get_payment_link(
         self,
@@ -32,9 +34,9 @@ class FreeKassa(FreeKassaSign):
         phone: str | None = None,
         email: str | None = None,
         payment_system_id: int | None = None,
-    ):
+    ) -> str:
         """
-
+        Создания ссылки для оплаты через freekassa
         :param amount:
         :param order_id:
         :param currency:
@@ -42,13 +44,14 @@ class FreeKassa(FreeKassaSign):
         :param phone:
         :param email:
         :param payment_system_id:
-        :return:
+        :return: payment link
         """
 
         params = []
 
         msg = f"{self._shop_id}:{amount}:{self._secret_word}:{currency}:{order_id}"
-        signature = self._get_signature(msg)
+        fks = FreeKassaSignature()
+        signature = fks.get_signature(msg)
         params.append(
             f"m={self._shop_id}&oa={amount}&o={order_id}&s={signature}&currency={currency}&lang={lang}"
         )
@@ -63,4 +66,3 @@ class FreeKassa(FreeKassaSign):
         params_row = "&".join(params)
 
         return f"{self.API_URL}?{params_row}"
-

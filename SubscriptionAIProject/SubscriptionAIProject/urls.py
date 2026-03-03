@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include("ProductApp.urls")),
-    path('payment/', include("PaymentApp.urls")),
+#    path('payment/', include("PaymentApp.urls")),
 
     path('404', TemplateView.as_view(template_name="not-found.html"), name="not-found"),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),

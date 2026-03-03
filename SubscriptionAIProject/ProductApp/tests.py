@@ -53,3 +53,37 @@ class ProductModelTests(TestCase):
         )
         replaced_title = product.title_replace_br()
         self.assertEqual(replaced_title, "Title Product")
+
+    def test_product_model_fields(self):
+        model_fields = ProductModel._meta.get_fields()
+        fields = [field.name for field in model_fields]
+        expected_fields = [
+            'ordermodel', 'id', 'uuid', 'badge', 'card_featured', 'title',
+            'term', 'subtitle', 'price', 'features_html', 'description_html',
+            'image', 'url', 'active'
+        ]
+        self.assertEqual(fields, expected_fields)
+
+    def test_badges_choices(self):
+        BADGE_CHOICES = (
+            (1, "Пусто"),
+            (2, "Лучший выбор"),
+            (3, "Безлимит"),
+            (4, "Новинка"),
+            (5, "Хит"),
+        )
+        self.assertEqual(ProductModel.BADGE_CHOICES, BADGE_CHOICES)
+
+    def test_terms_choices(self):
+        TERM_CHOICES = (
+            (1, "1 МЕСЯЦ"),
+            (2, "2 МЕСЯЦА"),
+            (3, "3 МЕСЯЦА"),
+            (4, "4 МЕСЯЦА"),
+            (5, "5 МЕСЯЦЕВ"),
+            (6, "6 МЕСЯЦЕВ"),
+            (7, "1 ГОД"),
+            (8, "2 ГОДА"),
+            (9, "3 ГОДА"),
+        )
+        self.assertEqual(ProductModel.TERM_CHOICES, TERM_CHOICES)

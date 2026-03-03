@@ -24,11 +24,11 @@ if not settings.DEBUG:
         f = RequestFactory()
         request = f.request(**{
             'wsgi.url_scheme': 'http',
-            'HTTP_HOST': settings.DOMAIN,
+            'HTTP_HOST': settings.SITE_DOMAIN,
             'QUERY_STRING': '',
             'REQUEST_METHOD': 'GET',
-            'PATH_INFO': '/account/login/',
-            'SERVER_PORT': '8080',
+            'PATH_INFO': '/',
+            'SERVER_PORT': '8000',
         })
 
         def start_response(*args):
