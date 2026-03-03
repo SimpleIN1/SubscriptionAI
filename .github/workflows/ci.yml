@@ -2,8 +2,7 @@ name: CI for project
 
 on:
   push:
-    branches:
-      - ci-branch-test
+    branches: [ ci-branch-test ]
 
 jobs:
   hello-world:
