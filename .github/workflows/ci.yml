@@ -1,0 +1,19 @@
+name: CI for project
+
+on:
+  push:
+    branches:
+      - ci-branch-test
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Say Hello
+        run: echo "Hello, GitHub Actions! This is my first workflow!"
+
+      - name: Show date
+        run: date
